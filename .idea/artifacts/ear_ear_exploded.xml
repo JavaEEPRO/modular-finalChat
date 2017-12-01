@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="ear:ear exploded">
+    <output-path>$PROJECT_DIR$/ear/target/modular-1</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ear/target/modular-1/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/ear/src/main/application" />
+      <element id="archive" name="logic-1.0-SNAPSHOT.jar">
+        <element id="artifact" artifact-name="logic:ejb exploded" />
+      </element>
+      <element id="archive" name="views-1.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="views:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>
