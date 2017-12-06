@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>release1</title>
+</h:head>
+<h:body>
+    <div id="header" style="border:solid 1px grey; height:6.5em; width:100%;">
+        <h:outputText value="God bless please in the name of Jesus Christ"/>
+        <div id="calendar" style="margin:5px; border:solid 1px grey; height:7em; width:7em; position: absolute; right:0px; top:0px;">
+            <h:dataTable border="1" value="#{chManager.calendar}" var="line">
+                <h:column style="height:13px;" title="su"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col1}"/></h:column>
+                <h:column style="height:13px;" title="mo"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col2}"/></h:column>
+                <h:column style="height:13px;" title="tu"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col3}"/></h:column>
+                <h:column style="height:13px;" title="we"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col4}"/></h:column>
+                <h:column style="height:13px;" title="th"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col5}"/></h:column>
+                <h:column style="height:13px;" title="fr"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col6}"/></h:column>
+                <h:column style="height:13px;" title="sa"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col7}"/></h:column>
+            </h:dataTable>
+        </div>
+    </div>
+
+    <div id = "chat" style="position:fixed; bottom:5px; border:solid 1px grey; border-radius: 2px;">
+    <div style="overflow:scroll; height:270px; width:333px; background-color: powderblue;" title="chat">
+
+        <div><h:form><h:outputText value = "  "/><h:commandLink title="registration" style="font-size: 11px; line-height: 0.4em" value="Registration"/><h:outputText value = "  "/><h:commandLink title="configuration" style="font-size: 11px; line-height: 0.4em" value="Settings"/><h:outputText value = "  "/><h:commandLink title="list of users" style="font-size: 11px; line-height: 0.4em" value="UsersList"/><h:outputText value = "  "/><h:commandLink title="download this chat" style="font-size: 11px; line-height: 0.4em" value="DownloadChat"/><h:outputText value = "  "/><h:commandLink title="troubleshooting" style="font-size: 11px; line-height: 0.4em" value="Help"/><h:outputText value = "  "/><h:commandLink title="about this version" style="font-size: 11px; line-height: 0.4em" value="About"/></h:form></div>
+        <h4>Chat:</h4>
+
+        <h:dataTable value="#{chManager.allMessages}" var="message">
+
+            <h:column>
+                <h:outputText style="font-size: 10px; line-height: 0.4em" value="#{message.time}" />
+            </h:column>
+
+            <h:column>
+                <h:form><h:commandLink style="font-size: 13px" value="#{message.author}" /></h:form>
+            </h:column>
+
+            <h:column>
+                <h:outputText style="background-color: #{message.password}" value="#{message.data}" />
+            </h:column>
+
+        </h:dataTable>
+    </div>
+    <h:form>
+        <h:panelGrid columns="3">
+            <h:commandLink value="{user}" title="rename"/>
+            <h:inputText id="data" title="say to chat" value="#{chManager.data}" required="true" requiredMessage="cant send empty"/>
+            <h:commandButton value="Send message" title="say" action="#{chManager.createMessage()}"/>
+
+            <h:outputLabel value=" "/>
+            <h:message id="msg" for="data" style="color:red"/>
+            <h:commandButton value="Clear" title="reset field" action="#{chManager.resetData()}"/>
+        </h:panelGrid>
+    </h:form>
+    </div>
+</h:body>
+</html>
