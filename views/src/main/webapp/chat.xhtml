@@ -4,25 +4,265 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://org.primefaces/ui/extensions"
+>
 <h:head>
     <title>release1</title>
+    <!--link id="style1"  rel="stylesheet"  type="text/css" href="${facesContext.externalContext.request.contextPath}/css/test.css"/-->
+    <h:outputStylesheet name="css/style.css"/>
+    <h:outputScript name="js/script.js" target="body"/>
+    <h:outputScript name="js/jquery-3.2.1.js" target="body"/>
+    <!--script type="text/javascript" src="js/jquery-3.2.1.js"/>
+    <script type="text/javascript" id="scrip1"  src="js/script.js"/-->
 </h:head>
-<h:body>
-    <div id="header" style="border:solid 1px grey; height:6.5em; width:100%;">
+<h:body >
+
+    <!--====================================HEADER===================================-->
+<div class="ht">  <!--something as analog of http-->
+    <div id="header">
+
+        <div id="main">
+
+            <div id="logocontainer">
+
+                <div id="logo"></div>
+
+                <div id="imglogo">
+
+                    <div class="stage1">
+                        <div class="cubespinner">
+                            <div class="face1 p1">Passover </div>
+                            <div class="face2">Jesus </div>
+                            <div class="face3 p1">Our </div>
+                            <div class="face4">Jesus </div>
+                            <div class="face5 p1">Passover </div>
+                            <div class="face6">Our </div>
+                        </div>
+                    </div>
+
+                </div ><h3 id="namelogo" onclick="PopUpShowAbout()" title="About Him"><i>Resurrected One</i></h3><div class="lightning1"></div><div class="lightning3"><div class="lightning4"></div></div></div>
+
+
+            <div id="import" onclick="PopUpShowImport()" title="important messages">!<div id="lightning2"></div></div>
+
+            <div id="rightblock">
+                <div id="settings" onclick="PopUpShowSetup()" title="configure basic settings">setup</div>
+                <div class="time"></div>
+            </div>
+
+        </div>                                                 <!--end of MAIN-->
+
+
+        <div id="sec">
+
+
+            <div id="diodecontainer"><div class="diode"><div class="circle"></div></div><form action="index.html"><button id="bh" class="mydiv" type="submit" title="this button quickly delivers You to Main Page of Portal (You are already here)">Home</button></form></div>
+
+
+
+            <div id="logf"><form id="log" action="#" onsubmit="submitFunction()"><input id="uname" title="unique username" type="text"/>
+                <input id="pwd" title="protected field" type="password"/>
+                <div id="blockpane"><input id="lvs" title="logging in using social account" type="button" onclick="PopUpShowSoc()" value="log via social "/><div id="bns"><input id="sb" type="submit" title="click to log in" value="Enter Portal"/><div id="cboxntitle"><input title="remember me" type="checkbox" id="chb" checked="checked" name="rem" value="remember me"/>
+                    <div id="remem">Remember me</div>
+                </div></div> </div></form></div>
+
+            <div id="vips">
+
+
+                <div id="regtitle" onclick="PopUpShow()">register</div>
+                <div id="arrow" class="spinner" onclick="PopUpShow()"></div>
+                <input type="button" id="vip" title="register as VIP user" onclick="PopUpShow()" value="V i P" />
+                <input type="button" id="vipplus" value=" plus" title="became VIP PLUS user" onclick="PopUpShow2()"/>
+
+
+
+            </div>
+
+
+            <div id="srchcontainer"><div id="bextsearch"><input onclick="PopUpShow3()" title="Set Up my Extended Search properties ()" type="button" id="extend" value=" Configure  Extended  Search"/></div> <div id="srch"><input id="spterm" type="text" name="spterm" /><div id="spresult">&nbsp;</div></div></div>
+
+
+            <div id="lngselnsun">
+
+                <div id="blink"></div>
+
+                <div id="sun"></div>
+
+                <div id="langsel" class="dropdown">
+                    <div class="dropbtn">EN</div>
+                    <div class="dropdown-content">
+                        <a href="http://www.google.com" class="items" id="en" target="_blank">EN</a>
+                        <a href="http://www.vk.com"  class="items" id="ru" target="_blank">RU</a>
+                        <a href="http://www.vk.com"  class="items" id="ua" target="_blank">UA</a>
+                        <a href="http://www.vk.com"  class="items" id="sk" target="_blank">SK</a>
+                        <a href="indexcz.html"  class="items" id="cz" title="чеська мова">CZ</a>
+                        <a href="http://www.vk.com"  class="items" id="zak"  target="_blank">ZAK</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="calncl"><table id="calendar2">
+                <thead>
+                <tr><td>‹</td><td colspan="5"></td><td>›</td></tr>
+                </thead>
+                <tr><td>Mo</td><td>Tu</td><td>We</td><td>Th</td><td>Fr</td><td>Sa</td><td>Su</td></tr>
+                <tbody id="test1"></tbody>
+            </table>
+            </div>
+
+            <div id="rqc" onclick="PopUpShow4()" title="press, an we'll call You shortly"><img alt="order call" id="ph" src="images/ph.png" width="35px" height="34px"/>Request Call </div>
+
+
+
+        </div>
+    </div>
+
+    <!--=============================END OF HEADER===================================-->
+
+    <!--<h:form>
+        <h3 style="margin-top:0">Client</h3>
+        <p:clock />
+
+        <h3>Server</h3>
+        <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+
+        <h3>Analog</h3>
+        <p:clock displayMode="analog" />
+    </h:form>
+
+    <p:panelGrid columns="2" style="width:100%;" columnClasses="clockColumn,clockColumn">
+        <h:outputText value="Client"/>
+        <h:outputText value="Server"/>
+        <pe:analogClock/>
+        <pe:analogClock mode="server" startTime="#{basicAnalogClockController.now}"/>
+    </p:panelGrid>-->
+
+
+    <!--===============TEST CALENDAR=====================-->
+
+    <!--<h:form id="form">
+        <p:growl id="msgs" showDetail="true" />
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel for="inline" value="Inline:" />
+            <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+
+            <p:outputLabel for="popup" value="Popup:" />
+            <p:calendar id="popup" value="#{calendarView.date2}" />
+
+            <p:outputLabel for="button" value="Button:" />
+            <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+
+            <p:outputLabel for="event" value="Select Event:" />
+            <p:calendar id="event" value="#{calendarView.date4}">
+                <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+            </p:calendar>
+
+            <p:outputLabel for="german" value="German:" />
+            <p:calendar id="german" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+
+            <p:outputLabel for="restricted" value="Restricted:" />
+            <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14" maxdate="7/1/14" />
+
+            <p:outputLabel for="multi" value="Multiple:" />
+            <p:calendar id="multi" value="#{calendarView.date7}" pages="3" />
+
+            <p:outputLabel for="effect" value="Effect:" />
+            <p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
+
+            <p:outputLabel for="mask" value="Mask:" />
+            <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+
+            <p:outputLabel for="datetime" value="Datetime:" />
+            <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+            <p:outputLabel for="time" value="Time:" />
+            <p:calendar id="time" value="#{calendarView.date11}" pattern="HH:mm" timeOnly="true"  />
+        </h:panelGrid>
+
+        <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
+
+        <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+            <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                <h:outputText value="Inline:" />
+                <h:outputText value="#{calendarView.date1}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Popup:" />
+                <h:outputText value="#{calendarView.date2}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Button:" />
+                <h:outputText value="#{calendarView.date3}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Event:" />
+                <h:outputText value="#{calendarView.date4}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="German:" />
+                <h:outputText value="#{calendarView.date5}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Restricted:" />
+                <h:outputText value="#{calendarView.date6}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Multiple:" />
+                <h:outputText value="#{calendarView.date7}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Effect:" />
+                <h:outputText value="#{calendarView.date8}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Mask:" />
+                <h:outputText value="#{calendarView.date9}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+
+                <h:outputText value="Datetime:" />
+                <h:outputText value="#{calendarView.date10}">
+                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                </h:outputText>
+
+                <h:outputText value="Time:" />
+                <h:outputText value="#{calendarView.date11}">
+                    <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
+            </p:panelGrid>
+        </p:dialog>
+    </h:form>
+-->
+    <!--===============END OF TEST CALENDAR=====================-->
+
+    <div id="newHeader" style="border:solid 1px grey; height:6.5em; width:100%;">
         <h:outputText value="God bless please in the name of Jesus Christ"/>
-        <div id="calendar" style="margin:5px; border:solid 1px grey; height:7em; width:7em; position: absolute; right:0px; top:0px;">
-            <h:dataTable border="1" value="#{chManager.calendar}" var="line">
-                <h:column style="height:13px;" title="su"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col1}"/></h:column>
-                <h:column style="height:13px;" title="mo"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col2}"/></h:column>
-                <h:column style="height:13px;" title="tu"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col3}"/></h:column>
-                <h:column style="height:13px;" title="we"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col4}"/></h:column>
-                <h:column style="height:13px;" title="th"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col5}"/></h:column>
-                <h:column style="height:13px;" title="fr"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col6}"/></h:column>
-                <h:column style="height:13px;" title="sa"><h:outputText style="font-size:0.5em; line-height: 0.5em;" value="#{line.col7}"/></h:column>
+        <div id="calendar" style="margin:5px; border:solid 0.5px grey; height:6em; width:6em; position: absolute; right:0px; top:0px;">
+            <h:dataTable style="max-height:5em; width:6em;" cellspacing="0" cellpadding="0" border="1" value="#{mainManager.calendar}" var="line">
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col1}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col2}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col3}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col4}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col5}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col6}"/></h:column>
+                <h:column ><h:outputText style="font-size:0.4em; line-height: 0.2em;" value="#{line.col7}"/></h:column>
             </h:dataTable>
         </div>
     </div>
+
 
     <div id = "chat" style="position:fixed; bottom:5px; border:solid 1px grey; border-radius: 2px;">
     <div style="overflow:scroll; height:270px; width:333px; background-color: powderblue;" title="chat">
@@ -30,7 +270,7 @@
         <div><h:form><h:outputText value = "  "/><h:commandLink title="registration" style="font-size: 11px; line-height: 0.4em" value="Registration"/><h:outputText value = "  "/><h:commandLink title="configuration" style="font-size: 11px; line-height: 0.4em" value="Settings"/><h:outputText value = "  "/><h:commandLink title="list of users" style="font-size: 11px; line-height: 0.4em" value="UsersList"/><h:outputText value = "  "/><h:commandLink title="download this chat" style="font-size: 11px; line-height: 0.4em" value="DownloadChat"/><h:outputText value = "  "/><h:commandLink title="troubleshooting" style="font-size: 11px; line-height: 0.4em" value="Help"/><h:outputText value = "  "/><h:commandLink title="about this version" style="font-size: 11px; line-height: 0.4em" value="About"/></h:form></div>
         <h4>Chat:</h4>
 
-        <h:dataTable value="#{chManager.allMessages}" var="message">
+        <h:dataTable value="#{mainManager.allMessages}" var="message">
 
             <h:column>
                 <h:outputText style="font-size: 10px; line-height: 0.4em" value="#{message.time}" />
@@ -49,14 +289,15 @@
     <h:form>
         <h:panelGrid columns="3">
             <h:commandLink value="{user}" title="rename"/>
-            <h:inputText id="data" title="say to chat" value="#{chManager.data}" required="true" requiredMessage="cant send empty"/>
-            <h:commandButton value="Send message" title="say" action="#{chManager.createMessage()}"/>
+            <h:inputText id="data" title="write message" value="#{mainManager.data}" required="true" requiredMessage="cant send empty"/>
+            <h:commandButton value="Send message" title="say" action="#{mainManager.createMessage()}"/>
 
             <h:outputLabel value=" "/>
             <h:message id="msg" for="data" style="color:red"/>
-            <h:commandButton value="Clear" title="reset field" action="#{chManager.resetData()}"/>
+            <h:commandButton value="Clear" title="reset field" action="#{mainManager.resetData()}"/>
         </h:panelGrid>
     </h:form>
     </div>
+</div> <!--ht-->
 </h:body>
 </html>

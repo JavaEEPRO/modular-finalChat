@@ -12,6 +12,9 @@
       </element>
       <element id="directory" name="lib">
         <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
+        <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.3" />
+        <element id="library" level="project" name="Maven: org.primefaces.extensions:primefaces-extensions:6.1.1" />
+        <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
       </element>
       <element id="archive" name="views-1.0-SNAPSHOT.war">
         <element id="artifact" artifact-name="views:war exploded" />

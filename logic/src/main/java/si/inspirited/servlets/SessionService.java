@@ -1,5 +1,6 @@
 package si.inspirited.servlets;
 
+import si.inspirited.domain.entityes.UserEntity;
 import si.inspirited.ejb.ChEngine;
 
 import javax.servlet.ServletException;
@@ -10,20 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/")
+import javax.ejb.EJB;
+
+@WebServlet(urlPatterns = "*")
 public class SessionService  extends HttpServlet {
+
+    @EJB
+    private ChEngine chEngine;
 
     private boolean hasSession;
 
-    public Object getSess() {
-        return sess;
-    }
 
-    public void setSess(Object sess) {
-        this.sess = sess;
-    }
-
-    private Object sess;
+    private String sessName;
 
 
     @Override
@@ -32,13 +31,17 @@ public class SessionService  extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getValue("name") == null) {
+        if (session.getAttribute("name") == null) {
             hasSession = false;
-            ChEngine engine = new ChEngine();
-            engine.createUser();
+            /*UserEntity newUser = chEngine.createUser();
+            session.setAttribute("name", "newUser.getLogin");
+            newUser.setLogin((String)session.getAttribute("name"));
+            newUser.setSessName((String)session.getAttribute("name"));
+            chEngine.getEntityManager().persist(newUser);*/
+            //chEngine.findUname();
         }else{
             hasSession = true;
-            sess = session.getValue("name");
+            sessName = (String)session.getValue("name");
         }
     }
 
@@ -48,6 +51,14 @@ public class SessionService  extends HttpServlet {
 
     public void setHasSession(boolean hasSession) {
         this.hasSession = hasSession;
+    }
+
+    public String getSess() {
+        return sessName;
+    }
+
+    public void setSessName(String sessName) {
+        this.sessName = sessName;
     }
 
 }

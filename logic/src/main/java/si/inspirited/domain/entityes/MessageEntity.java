@@ -1,5 +1,8 @@
 package si.inspirited.domain.entityes;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +19,7 @@ public class MessageEntity {
     private String data;
     private String password;
     private String time;
+        
     private String author;
 
     public String getData() {
@@ -42,6 +46,7 @@ public class MessageEntity {
     public void setTime(String time) {
         this.time = time;
     }
+
 
     public String getAuthor() {
         return author;
